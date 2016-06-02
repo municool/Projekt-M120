@@ -1,12 +1,15 @@
-﻿<Window x:Class="M120_LB2_FS16.MainWindow"
+﻿<Window x:Name="mainWindow" x:Class="M120_LB2_FS16.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:M120_LB2_FS16"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="PersonalPlaner" Height="267.987" Width="608.793">
     <Grid>
-        
+        <Button x:Name="btnCreateEinsatz" Content="Einsatz erstellen" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="117" Click="btnCreateEinsatz_Click"/>
+        <Button x:Name="btnAllEinsaetze" Content="Alle Einsätze" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Width="117"/>
+        <Button x:Name="btnKalender" Content="Kalender" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" Width="117"/>
+        <local:EinsaetzeCRu x:Name="EinsaetzeCRU" HorizontalAlignment="Left" Margin="191,-3,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
     </Grid>
 </Window>

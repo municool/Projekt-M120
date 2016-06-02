@@ -106,5 +106,18 @@ namespace M120_LB2_FS16
             demoDatenEinsaetze();
         }
         #endregion
+
+        private void btnCreateEinsatz_Click(object sender, RoutedEventArgs e)
+        {
+            if (EinsaetzeCRU.Visibility == Visibility.Visible)
+            {
+                EinsaetzeCRU.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                EinsaetzeCRU.Visibility = Visibility.Visible;
+            }
+            
+        }
     }
 }
