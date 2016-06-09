@@ -22,7 +22,6 @@ namespace M120_LB2_FS16
     {
         public ListView()
         {
-            
             InitializeComponent();
             dgEinsaetze.ItemsSource = Bibliothek.Einsatz_Alle();
         }

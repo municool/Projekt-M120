@@ -7,6 +7,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <DataGrid x:Name="dgEinsaetze" ItemsSource="{Binding}"></DataGrid>
+        <DataGrid x:Name="dgEinsaetze" ItemsSource="{Binding}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsReadOnly="True"></DataGrid>
     </Grid>
 </UserControl>

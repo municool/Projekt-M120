@@ -23,6 +23,8 @@ namespace M120_LB2_FS16
         public EinsaetzeCRu()
         {
             InitializeComponent();
+            cbEinsatz.ItemsSource = Bibliothek.Projekt_Alle();
+            cbMitarbeiter.ItemsSource = Bibliothek.Mitarbeiter_Alle();
         }
     }
 }

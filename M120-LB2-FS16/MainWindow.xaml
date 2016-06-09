@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:M120_LB2_FS16"
         mc:Ignorable="d"
-        Title="PersonalPlaner" Height="267.987" Width="608.793">
+        Title="PersonalPlaner" Height="329.987" Width="729.793">
     <Grid>
+        <Rectangle HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Stretch" Width="137"/>
         <Button x:Name="btnCreateEinsatz" Content="Einsatz erstellen" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="117" Click="btnCreateEinsatz_Click"/>
-        <Button x:Name="btnAllEinsaetze" Content="Alle Einsätze" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Width="117"/>
+        <Button x:Name="btnAllEinsaetze" Content="Alle Einsätze" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Width="117" Click="btnAllEinsaetze_Click"/>
         <Button x:Name="btnKalender" Content="Kalender" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" Width="117"/>
-        <local:EinsaetzeCRu x:Name="EinsaetzeCRU" HorizontalAlignment="Left" Margin="191,-3,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
-        <Rectangle HorizontalAlignment="Left" Height="237" Stroke="Black" VerticalAlignment="Top" Width="137"/>
-        <local:ListView HorizontalAlignment="Left" Margin="156,10,0,0" VerticalAlignment="Top" Height="193" Width="416"/>
+        <local:EinsaetzeCRu x:Name="EinsaetzeCRU" HorizontalAlignment="Stretch" Margin="137,2,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+        <local:ListView x:Name="lvEinsaetze" HorizontalAlignment="Stretch" Margin="137,0,0,0" VerticalAlignment="Stretch" Visibility="Hidden"/>
     </Grid>
 </Window>
