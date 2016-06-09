@@ -16,5 +16,9 @@ namespace M120_LB2_FS16
         {
 
         }
+        public override string ToString()
+        {
+            return ID.ToString();
+        }
     }
 }

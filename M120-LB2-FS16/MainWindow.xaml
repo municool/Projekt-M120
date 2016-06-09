@@ -11,5 +11,7 @@
         <Button x:Name="btnAllEinsaetze" Content="Alle Einsätze" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Width="117"/>
         <Button x:Name="btnKalender" Content="Kalender" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" Width="117"/>
         <local:EinsaetzeCRu x:Name="EinsaetzeCRU" HorizontalAlignment="Left" Margin="191,-3,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+        <Rectangle HorizontalAlignment="Left" Height="237" Stroke="Black" VerticalAlignment="Top" Width="137"/>
+        <local:ListView HorizontalAlignment="Left" Margin="156,10,0,0" VerticalAlignment="Top" Height="193" Width="416"/>
     </Grid>
 </Window>
