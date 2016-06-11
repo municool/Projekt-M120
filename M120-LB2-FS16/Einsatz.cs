@@ -13,7 +13,6 @@ namespace M120_LB2_FS16
         public Color Farbe { get; set; }
         public Einsatz()
         {
-
         }
 
         public override string ToString()

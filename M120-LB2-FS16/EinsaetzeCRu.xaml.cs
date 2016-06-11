@@ -25,6 +25,7 @@ namespace M120_LB2_FS16
             InitializeComponent();
             cbEinsatz.ItemsSource = Bibliothek.Projekt_Alle();
             cbMitarbeiter.ItemsSource = Bibliothek.Mitarbeiter_Alle();
+            cbZeitAufwand.ItemsSource = new int[]{1,2,3,4,5,6,7,8};
         }
     }
 }

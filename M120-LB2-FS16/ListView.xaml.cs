@@ -20,10 +20,18 @@ namespace M120_LB2_FS16
     /// </summary>
     public partial class ListView : UserControl
     {
+        private List<Einsatz> einsatzListe;
+
         public ListView()
         {
             InitializeComponent();
-            dgEinsaetze.ItemsSource = Bibliothek.Einsatz_Alle();
+            einsatzListe = Bibliothek.Einsatz_Alle();
+            dgEinsaetze.ItemsSource = einsatzListe;
+        }
+
+        private void dgEinsaetze_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }

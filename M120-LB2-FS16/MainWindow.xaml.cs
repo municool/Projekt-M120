@@ -118,8 +118,6 @@ namespace M120_LB2_FS16
                 lvEinsaetze.Visibility = Visibility.Hidden;
                 EinsaetzeCRU.Visibility = Visibility.Visible;
             }
-            
-            
         }
 
         private void btnAllEinsaetze_Click(object sender, RoutedEventArgs e)
@@ -128,6 +126,15 @@ namespace M120_LB2_FS16
             {
                 EinsaetzeCRU.Visibility = Visibility.Hidden;
                 lvEinsaetze.Visibility = Visibility.Visible;
+            }
+        }
+
+        public  void changeWindowToEinsatz()
+        {
+            if (EinsaetzeCRU.Visibility != Visibility.Visible)
+            {
+                lvEinsaetze.Visibility = Visibility.Hidden;
+                EinsaetzeCRU.Visibility = Visibility.Visible;
             }
         }
     }
