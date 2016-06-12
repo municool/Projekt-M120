@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,13 +26,24 @@ namespace M120_LB2_FS16
         public ListView()
         {
             InitializeComponent();
+            setEinsatzListe();
+            refreshListView();
+        }
+
+        public void setEinsatzListe()
+        {
             einsatzListe = Bibliothek.Einsatz_Alle();
+        }
+
+        public void refreshListView()
+        {
             dgEinsaetze.ItemsSource = einsatzListe;
         }
 
         private void dgEinsaetze_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
+            Einsatz einsatz = (Einsatz)dgEinsaetze.SelectedItem;
+            
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,8 @@ namespace M120_LB2_FS16
     /// </summary>
     public partial class MainWindow : Window
     {
+        private EinsaetzeCRu EinsaetzeCRU;
+        private ListView lvEinsaetze;
         public MainWindow()
         {
             datenBereitstellen();
@@ -113,29 +116,44 @@ namespace M120_LB2_FS16
 
         private void btnCreateEinsatz_Click(object sender, RoutedEventArgs e)
         {
-            if (EinsaetzeCRU.Visibility != Visibility.Visible)
-            {
-                lvEinsaetze.Visibility = Visibility.Hidden;
-                EinsaetzeCRU.Visibility = Visibility.Visible;
-            }
+            EinsaetzeCRU = createEinsatzCRU();
+            Content.Children.Clear();
+            Content.Children.Add(EinsaetzeCRU);
+        }
+
+        private EinsaetzeCRu createEinsatzCRU()
+        {
+            EinsaetzeCRU = new EinsaetzeCRu();
+            EinsaetzeCRU.Name = "EinsaetzeCRU";
+            EinsaetzeCRU.HorizontalAlignment = HorizontalAlignment.Stretch;
+            EinsaetzeCRU.Margin = new Thickness(10, 2, 0, 0);
+            EinsaetzeCRU.VerticalAlignment = VerticalAlignment.Top;
+            return EinsaetzeCRU;
         }
 
         private void btnAllEinsaetze_Click(object sender, RoutedEventArgs e)
         {
-            if (lvEinsaetze.Visibility != Visibility.Visible)
-            {
-                EinsaetzeCRU.Visibility = Visibility.Hidden;
-                lvEinsaetze.Visibility = Visibility.Visible;
-            }
+            lvEinsaetze = createListView();
+            Content.Children.Clear();
+            Content.Children.Add(lvEinsaetze);
         }
 
-        public  void changeWindowToEinsatz()
+        private ListView createListView()
         {
-            if (EinsaetzeCRU.Visibility != Visibility.Visible)
-            {
-                lvEinsaetze.Visibility = Visibility.Hidden;
-                EinsaetzeCRU.Visibility = Visibility.Visible;
-            }
+            lvEinsaetze = new ListView();
+            lvEinsaetze.Name = "lvEinsaetze";
+            lvEinsaetze.HorizontalAlignment = HorizontalAlignment.Stretch;
+            lvEinsaetze.Margin = new Thickness(0, 0, 0, 0);
+            lvEinsaetze.VerticalAlignment = VerticalAlignment.Stretch;
+            return lvEinsaetze;
         }
+
+        public void showUpdateEinsatz(Einsatz e)
+        {
+            EinsaetzeCRU = createEinsatzCRU();
+            Content.Children.Clear();
+            Content.Children.Add(EinsaetzeCRU);
+        }
+
     }
 }

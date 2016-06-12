@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Windows.Media;
+using System.Drawing;
 
 namespace M120_LB2_FS16
 {
-    class Einsatz
+    public class Einsatz
     {
-        public Int32 ID { get; set; }
+        public long ID { get; set; }
         public DateTime Start { get; set; }
         public DateTime Ende { get; set; }
         public Projekt Projekt { get; set; }
