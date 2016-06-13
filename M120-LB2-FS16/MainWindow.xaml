@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:M120_LB2_FS16"
         mc:Ignorable="d"
-        Title="PersonalPlaner" Height="350.322" Width="817.605">
+        Title="PersonalPlaner" Height="400" Width="1000">
     <Grid x:Name="mainGrid">
         <Rectangle HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Stretch" Width="137"/>
         <Button x:Name="btnCreateEinsatz" Content="Einsatz erstellen" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="117" Click="btnCreateEinsatz_Click"/>
         <Button x:Name="btnAllEinsaetze" Content="Alle Einsätze" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Width="117" Click="btnAllEinsaetze_Click"/>
-        <Button x:Name="btnKalender" Content="Kalender" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" Width="117"/>
+        <Button x:Name="btnKalender" Content="Kalender" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" Width="117" Click="btnKalender_Click"/>
         <Grid x:Name="Content" HorizontalAlignment="Stretch" Margin="137,0,0,-0.2" VerticalAlignment="Stretch"/>
     </Grid>
 </Window>

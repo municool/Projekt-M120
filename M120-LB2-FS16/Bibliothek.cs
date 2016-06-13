@@ -61,11 +61,23 @@ namespace M120_LB2_FS16
             // Projekt nachtragen
             Projekt_nach_ID(einsatz.Projekt.ID).Einsaetze.Add(einsatz);
         }
+
+        public static void EinsatzUpdate(Einsatz einsatz)
+        {
+            Einsatz test = Einsaetze.Where(e => e.ID == einsatz.ID).FirstOrDefault();
+            if (test != null)
+            {
+                test.Ende = einsatz.Ende;
+                test.Start = einsatz.Start;
+                test.Mitarbeiter = einsatz.Mitarbeiter;
+                test.Projekt = einsatz.Projekt;
+            }
+        }
         public static List<Einsatz> Einsatz_Alle()
         {
             return Einsaetze;
         }
-        public static Einsatz Einsatz_nach_ID(Int32 id)
+        public static Einsatz Einsatz_nach_ID(long id)
         {
             return (from element in Einsaetze where element.ID == id select element).FirstOrDefault();
         }
@@ -73,6 +85,20 @@ namespace M120_LB2_FS16
         {
             return (from element in Einsaetze where element.Start > tag.AddDays(-1) && element.Start < tag.AddDays(1) select element).ToList();
         }
+
         #endregion
+
+        public static long uIDGenarator()
+        {
+            string a = DateTime.Now.Month.ToString() +
+            DateTime.Now.Day.ToString() +
+            DateTime.Now.Year.ToString() +
+            DateTime.Now.Hour.ToString() +
+            DateTime.Now.Minute.ToString() +
+            DateTime.Now.Second.ToString() +
+            DateTime.Now.Millisecond.ToString();
+
+            return long.Parse(a);
+        }
     }
 }

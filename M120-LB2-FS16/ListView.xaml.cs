@@ -22,6 +22,7 @@ namespace M120_LB2_FS16
     public partial class ListView : UserControl
     {
         private List<Einsatz> einsatzListe;
+        public event EventHandler UpdateEinsatz;
 
         public ListView()
         {
@@ -43,6 +44,11 @@ namespace M120_LB2_FS16
         private void dgEinsaetze_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Einsatz einsatz = (Einsatz)dgEinsaetze.SelectedItem;
+            
+            if (UpdateEinsatz != null)
+            {
+                UpdateEinsatz(this, e);
+            }
             
         }
     }

@@ -23,6 +23,8 @@ namespace M120_LB2_FS16
     {
         private EinsaetzeCRu EinsaetzeCRU;
         private ListView lvEinsaetze;
+        private KalenderWeek kw;
+
         public MainWindow()
         {
             datenBereitstellen();
@@ -30,6 +32,7 @@ namespace M120_LB2_FS16
         }
 
         #region Testdaten
+
         private void demoDatenMitarbeiter()
         {
             Mitarbeiter ma1 = new Mitarbeiter();
@@ -48,6 +51,7 @@ namespace M120_LB2_FS16
             ma2.Farbe = Colors.BlanchedAlmond;
             Bibliothek.Mitarbeiter_Neu(ma2);
         }
+
         private void demoDatenProjekte()
         {
             Projekt p1 = new Projekt();
@@ -72,6 +76,7 @@ namespace M120_LB2_FS16
             p2.Farbe = Colors.Yellow;
             Bibliothek.Projekt_Neu(p2);
         }
+
         private void demoDatenEinsaetze()
         {
             Einsatz e1 = new Einsatz();
@@ -106,12 +111,14 @@ namespace M120_LB2_FS16
             e4.Ende = new DateTime(2016, 6, 15, 14, 0, 0);
             Bibliothek.EinsatzNeu(e4);
         }
+
         private void datenBereitstellen()
         {
             demoDatenMitarbeiter();
             demoDatenProjekte();
             demoDatenEinsaetze();
         }
+
         #endregion
 
         private void btnCreateEinsatz_Click(object sender, RoutedEventArgs e)
@@ -128,6 +135,7 @@ namespace M120_LB2_FS16
             EinsaetzeCRU.HorizontalAlignment = HorizontalAlignment.Stretch;
             EinsaetzeCRU.Margin = new Thickness(10, 2, 0, 0);
             EinsaetzeCRU.VerticalAlignment = VerticalAlignment.Top;
+            EinsaetzeCRU.lblID.Content = Bibliothek.uIDGenarator().ToString();
             return EinsaetzeCRU;
         }
 
@@ -145,15 +153,48 @@ namespace M120_LB2_FS16
             lvEinsaetze.HorizontalAlignment = HorizontalAlignment.Stretch;
             lvEinsaetze.Margin = new Thickness(0, 0, 0, 0);
             lvEinsaetze.VerticalAlignment = VerticalAlignment.Stretch;
+            lvEinsaetze.UpdateEinsatz += new EventHandler(showUpdateEinsatz);
             return lvEinsaetze;
         }
 
-        public void showUpdateEinsatz(Einsatz e)
+        public void showUpdateEinsatz(object sender, EventArgs e)
         {
+            ListView test = (ListView)sender;
+            Einsatz einsatz = (Einsatz)test.dgEinsaetze.SelectedItem;
+
+            TimeSpan zeitaufwand = einsatz.Ende - einsatz.Start;
+
             EinsaetzeCRU = createEinsatzCRU();
+
+            EinsaetzeCRU.lblID.Content = einsatz.ID;
+            EinsaetzeCRU.cbEinsatz.SelectedItem = einsatz.Projekt;
+            EinsaetzeCRU.cbMitarbeiter.SelectedItem = einsatz.Mitarbeiter;
+            EinsaetzeCRU.cbBeginTimeHour.SelectedItem = einsatz.Start.Hour.ToString();
+            EinsaetzeCRU.cbBeginTimeMin.SelectedItem = einsatz.Start.Minute.ToString() == "0" ? "00" : "30";
+            EinsaetzeCRU.cbZeitAufwand.SelectedItem = zeitaufwand.Hours.ToString();
+            EinsaetzeCRU.dPdate.SelectedDate = einsatz.Start;
+            EinsaetzeCRU.lblFarbe.Content = einsatz.Farbe.ToString();
+            EinsaetzeCRU.lblIsUpdate.Content = "true";
+
             Content.Children.Clear();
             Content.Children.Add(EinsaetzeCRU);
         }
 
+        private void btnKalender_Click(object sender, RoutedEventArgs e)
+        {
+            kw = createKalenderWeek();
+            Content.Children.Clear();
+            Content.Children.Add(kw);
+        }
+
+        private KalenderWeek createKalenderWeek()
+        {
+            kw = new KalenderWeek();
+            kw.Name = "KalenderView";
+            kw.HorizontalAlignment = HorizontalAlignment.Stretch;
+            kw.Margin = new Thickness(0, 0, 0, 0);
+            kw.VerticalAlignment = VerticalAlignment.Stretch;
+            return kw;
+        }
     }
 }

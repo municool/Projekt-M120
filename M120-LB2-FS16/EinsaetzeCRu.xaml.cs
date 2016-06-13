@@ -25,7 +25,7 @@ namespace M120_LB2_FS16
             InitializeComponent();
             cbEinsatz.ItemsSource = Bibliothek.Projekt_Alle();
             cbMitarbeiter.ItemsSource = Bibliothek.Mitarbeiter_Alle();
-            cbZeitAufwand.ItemsSource = new int[] { 1, 2, 3, 4, 5, 6, 7, 8 };
+            cbZeitAufwand.ItemsSource = new string[] { "1", "2", "3", "4", "5", "6", "7", "8" };
             cbBeginTimeHour.ItemsSource = new string[] {"07", "08", "09", "10", "11", "12",
                                                         "13", "14", "15", "16", "17", "18"};
             cbBeginTimeMin.ItemsSource = new string[] { "00", "30" };
@@ -38,40 +38,64 @@ namespace M120_LB2_FS16
 
         private void saveEinsatz()
         {
-            Projekt p = (Projekt)cbEinsatz.SelectedItem;
-            Mitarbeiter m = (Mitarbeiter)cbMitarbeiter.SelectedItem;
-            string hour = cbBeginTimeHour.SelectedValue.ToString();
-            string min = cbBeginTimeMin.SelectedValue.ToString();
-            string aufwand = cbZeitAufwand.SelectedValue.ToString();
-            DateTime date = dPdate.SelectedDate.Value;
-
-            DateTime start = new DateTime(date.Year, date.Month, date.Day, int.Parse(hour), int.Parse(min), 0);
-            DateTime ende = new DateTime(date.Year, date.Month, date.Day, int.Parse(hour) + int.Parse(aufwand), int.Parse(min), 0);
-
-            DateTime projektStart = p.StartDatum;
-            DateTime projektEnde = p.EndDatum;
-
-            if (projektStart < start && projektEnde > ende)
+            try
             {
-                if (Bibliothek.Einsaetz_an_Datum(start).Count == 0 && Bibliothek.Einsaetz_an_Datum(ende).Count == 0)
+                Projekt p = (Projekt) cbEinsatz.SelectedItem;
+                Mitarbeiter m = (Mitarbeiter) cbMitarbeiter.SelectedItem;
+                string hour = cbBeginTimeHour.SelectedValue.ToString();
+                string min = cbBeginTimeMin.SelectedValue.ToString();
+                string aufwand = cbZeitAufwand.SelectedValue.ToString();
+                DateTime date = dPdate.SelectedDate.Value;
+                long id = long.Parse(lblID.Content.ToString());
+
+                DateTime start = new DateTime(date.Year, date.Month, date.Day, int.Parse(hour), int.Parse(min), 0);
+                DateTime ende = new DateTime(date.Year, date.Month, date.Day, int.Parse(hour) + int.Parse(aufwand),
+                    int.Parse(min), 0);
+
+                DateTime projektStart = p.StartDatum;
+                DateTime projektEnde = p.EndDatum;
+
+                if (projektStart < start && projektEnde > ende)
                 {
-                    Einsatz e = new Einsatz();
-                    e.ID = uIDGenarator();
-                    e.Projekt = p;
-                    e.Mitarbeiter = m;
-                    e.Start = start;
-                    e.Ende = ende;
-                    e.Farbe = randomColor();
-                    Bibliothek.EinsatzNeu(e);
+                    if (lblIsUpdate.Content == "true")
+                    {
+                        Einsatz e = Bibliothek.Einsatz_nach_ID(int.Parse(lblID.Content.ToString()));
+                        e.Projekt = p;
+                        e.Mitarbeiter = m;
+                        e.Start = start;
+                        e.Ende = ende;
+                        Bibliothek.EinsatzUpdate(e);
+                        MessageBox.Show("Der Einsatz wurde erfolgreich geändert!");
+                    }
+                    else
+                    {
+
+                        if (Bibliothek.Einsatz_nach_ID(id) == null)
+                        {
+                            Einsatz e = new Einsatz();
+                            e.ID = id;
+                            e.Projekt = p;
+                            e.Mitarbeiter = m;
+                            e.Start = start;
+                            e.Ende = ende;
+                            e.Farbe = randomColor();
+                            Bibliothek.EinsatzNeu(e);
+                            MessageBox.Show("Der Einsatz wurde erfolgreich erstellt!");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Es besteht bereits ein Eintrag mit dieser ID!");
+                        }
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("An diesem Datum besteht bereits ein Einsatz!");
+                    MessageBox.Show("Der Einsatz liegt nicht in der Projek!");
                 }
             }
-            else
+            catch (Exception e)
             {
-                MessageBox.Show("Der Einsatz liegt nicht in der Projek!");
+                MessageBox.Show("Es wurden nicht alle Felder ausgefühlt!");
             }
         }
 
@@ -85,18 +109,7 @@ namespace M120_LB2_FS16
             return randomColor;
         }
 
-        private long uIDGenarator()
-        {
-            string a = DateTime.Now.Month.ToString() +
-            DateTime.Now.Day.ToString() +
-            DateTime.Now.Year.ToString() +
-            DateTime.Now.Hour.ToString() +
-            DateTime.Now.Minute.ToString() +
-            DateTime.Now.Second.ToString() +
-            DateTime.Now.Millisecond.ToString();
-
-            return long.Parse(a);
-        }
+        
     }
 }
 
