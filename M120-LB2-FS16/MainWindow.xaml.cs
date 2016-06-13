@@ -163,13 +163,19 @@ namespace M120_LB2_FS16
             Einsatz einsatz = (Einsatz)test.dgEinsaetze.SelectedItem;
 
             TimeSpan zeitaufwand = einsatz.Ende - einsatz.Start;
+            string hour = einsatz.Start.Hour.ToString();
+
+            if (hour == "7" || hour == "8" || hour == "9")
+            {
+                hour = "0" + hour;
+            }
 
             EinsaetzeCRU = createEinsatzCRU();
 
             EinsaetzeCRU.lblID.Content = einsatz.ID;
             EinsaetzeCRU.cbEinsatz.SelectedItem = einsatz.Projekt;
             EinsaetzeCRU.cbMitarbeiter.SelectedItem = einsatz.Mitarbeiter;
-            EinsaetzeCRU.cbBeginTimeHour.SelectedItem = einsatz.Start.Hour.ToString();
+            EinsaetzeCRU.cbBeginTimeHour.SelectedItem = hour;
             EinsaetzeCRU.cbBeginTimeMin.SelectedItem = einsatz.Start.Minute.ToString() == "0" ? "00" : "30";
             EinsaetzeCRU.cbZeitAufwand.SelectedItem = zeitaufwand.Hours.ToString();
             EinsaetzeCRU.dPdate.SelectedDate = einsatz.Start;

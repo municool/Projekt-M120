@@ -59,7 +59,7 @@ namespace M120_LB2_FS16
                 {
                     if (lblIsUpdate.Content == "true")
                     {
-                        Einsatz e = Bibliothek.Einsatz_nach_ID(int.Parse(lblID.Content.ToString()));
+                        Einsatz e = Bibliothek.Einsatz_nach_ID(long.Parse(lblID.Content.ToString()));
                         e.Projekt = p;
                         e.Mitarbeiter = m;
                         e.Start = start;
