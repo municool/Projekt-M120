@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:M120_LB2_FS16"
-             mc:Ignorable="d" Height="263.464" Width="487.667">
+             mc:Ignorable="d" Height="315.329" Width="487.667">
     <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,0,0,-9">
         <Label x:Name="lblEinsatz" Content="Projekt" HorizontalAlignment="Left" Margin="0,1,0,0" VerticalAlignment="Top" Width="136" Height="36"/>
         <ComboBox x:Name="cbEinsatz" HorizontalAlignment="Left" Height="36" Margin="136,1,-61,0" ItemsSource="{Binding}" DisplayMemberPath="Name" VerticalAlignment="Top" Width="347" IsHitTestVisible="True" VerticalContentAlignment="Center"/>
@@ -22,5 +22,6 @@
         <Label x:Name="lblID" Content="" HorizontalAlignment="Left" Margin="0,206,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
         <Label x:Name="lblFarbe" Content="" HorizontalAlignment="Left" Margin="0,206,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
         <Label x:Name="lblIsUpdate" Content="" HorizontalAlignment="Left" Margin="0,206,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+        <Label x:Name="lblMeldung" Content="" HorizontalAlignment="Stretch" Margin="0,268,0,0" VerticalAlignment="Top" Height="36"/>
     </Grid>
 </UserControl>

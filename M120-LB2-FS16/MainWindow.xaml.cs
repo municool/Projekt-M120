@@ -159,9 +159,19 @@ namespace M120_LB2_FS16
 
         public void showUpdateEinsatz(object sender, EventArgs e)
         {
-            ListView test = (ListView)sender;
-            Einsatz einsatz = (Einsatz)test.dgEinsaetze.SelectedItem;
+            ListView liste = (ListView)sender;
+            showEinsatz((Einsatz)liste.dgEinsaetze.SelectedItem);
+        }
 
+        public void showUpdateEinsatzfromKalender(object sender, EventArgs e)
+        {
+            Button b = (Button) sender;
+            long id = long.Parse(b.ToolTip.ToString());
+            showEinsatz(Bibliothek.Einsatz_nach_ID(id));
+        }
+
+        private void showEinsatz(Einsatz einsatz)
+        {
             TimeSpan zeitaufwand = einsatz.Ende - einsatz.Start;
             string hour = einsatz.Start.Hour.ToString();
 
@@ -184,6 +194,7 @@ namespace M120_LB2_FS16
 
             Content.Children.Clear();
             Content.Children.Add(EinsaetzeCRU);
+
         }
 
         private void btnKalender_Click(object sender, RoutedEventArgs e)
@@ -200,6 +211,7 @@ namespace M120_LB2_FS16
             kw.HorizontalAlignment = HorizontalAlignment.Stretch;
             kw.Margin = new Thickness(0, 0, 0, 0);
             kw.VerticalAlignment = VerticalAlignment.Stretch;
+            kw.UpdateEinsatzFromKalender += new EventHandler(showUpdateEinsatzfromKalender);
             return kw;
         }
     }

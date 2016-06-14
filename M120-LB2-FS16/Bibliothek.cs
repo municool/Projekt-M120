@@ -83,7 +83,7 @@ namespace M120_LB2_FS16
         }
         public static List<Einsatz> Einsaetz_an_Datum(DateTime tag)
         {
-            return (from element in Einsaetze where element.Start > tag.AddDays(-1) && element.Start < tag.AddDays(1) select element).ToList();
+            return (from element in Einsaetze where element.Start.Date == tag.Date select element).ToList();
         }
 
         #endregion

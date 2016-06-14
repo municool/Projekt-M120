@@ -9,7 +9,6 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
@@ -40,62 +39,103 @@ namespace M120_LB2_FS16
         {
             try
             {
-                Projekt p = (Projekt) cbEinsatz.SelectedItem;
-                Mitarbeiter m = (Mitarbeiter) cbMitarbeiter.SelectedItem;
+                bool isAlreadyEinsatz = false;
+                Projekt p = (Projekt)cbEinsatz.SelectedItem;
+                Mitarbeiter m = (Mitarbeiter)cbMitarbeiter.SelectedItem;
                 string hour = cbBeginTimeHour.SelectedValue.ToString();
                 string min = cbBeginTimeMin.SelectedValue.ToString();
                 string aufwand = cbZeitAufwand.SelectedValue.ToString();
                 DateTime date = dPdate.SelectedDate.Value;
                 long id = long.Parse(lblID.Content.ToString());
+                int aufwandsstunde = int.Parse(hour) + int.Parse(aufwand);
+                aufwandsstunde = aufwandsstunde > 19 ? 19 : aufwandsstunde;
 
                 DateTime start = new DateTime(date.Year, date.Month, date.Day, int.Parse(hour), int.Parse(min), 0);
-                DateTime ende = new DateTime(date.Year, date.Month, date.Day, int.Parse(hour) + int.Parse(aufwand),
-                    int.Parse(min), 0);
+                DateTime ende = new DateTime(date.Year, date.Month, date.Day, aufwandsstunde, int.Parse(min), 0);
+
+                List<Einsatz> einsaetzeAnDatum = Bibliothek.Einsaetz_an_Datum(start);
+                if (einsaetzeAnDatum.Count != 0)
+                {
+                    foreach (var e in einsaetzeAnDatum)
+                    {
+                        if (e.Mitarbeiter == m)
+                        {
+                            if ((e.Start >= ende && e.Ende > ende) || (e.Start < start && e.Ende <= start))
+                            {
+                                isAlreadyEinsatz = true;
+                            }
+                            else
+                            {
+                                isAlreadyEinsatz = false;
+                            }
+                        }
+                        else
+                        {
+                            isAlreadyEinsatz = true;
+                        }
+                    }
+                }
+                else
+                {
+                    isAlreadyEinsatz = true;
+                }
 
                 DateTime projektStart = p.StartDatum;
                 DateTime projektEnde = p.EndDatum;
 
                 if (projektStart < start && projektEnde > ende)
                 {
-                    if (lblIsUpdate.Content == "true")
+                    if (isAlreadyEinsatz)
                     {
-                        Einsatz e = Bibliothek.Einsatz_nach_ID(long.Parse(lblID.Content.ToString()));
-                        e.Projekt = p;
-                        e.Mitarbeiter = m;
-                        e.Start = start;
-                        e.Ende = ende;
-                        Bibliothek.EinsatzUpdate(e);
-                        MessageBox.Show("Der Einsatz wurde erfolgreich geändert!");
-                    }
-                    else
-                    {
-
-                        if (Bibliothek.Einsatz_nach_ID(id) == null)
+                        if (lblIsUpdate.Content == "true")
                         {
-                            Einsatz e = new Einsatz();
-                            e.ID = id;
+                            Einsatz e = Bibliothek.Einsatz_nach_ID(long.Parse(lblID.Content.ToString()));
                             e.Projekt = p;
                             e.Mitarbeiter = m;
                             e.Start = start;
                             e.Ende = ende;
-                            e.Farbe = randomColor();
-                            Bibliothek.EinsatzNeu(e);
-                            MessageBox.Show("Der Einsatz wurde erfolgreich erstellt!");
+                            Bibliothek.EinsatzUpdate(e);
+                            lblMeldung.Background = System.Windows.Media.Brushes.Green;
+                            lblMeldung.Content = "Der Einsatz wurde erfolgreich geändert!";
                         }
                         else
                         {
-                            MessageBox.Show("Es besteht bereits ein Eintrag mit dieser ID!");
+                            if (Bibliothek.Einsatz_nach_ID(id) == null)
+                            {
+                                Einsatz e = new Einsatz();
+                                e.ID = id;
+                                e.Projekt = p;
+                                e.Mitarbeiter = m;
+                                e.Start = start;
+                                e.Ende = ende;
+                                e.Farbe = randomColor();
+                                Bibliothek.EinsatzNeu(e);
+                                lblMeldung.Background = System.Windows.Media.Brushes.Green;
+                                lblMeldung.Content = "Der Einsatz wurde erfolgreich erstellt!";
+                            }
+                            else
+                            {
+                                lblMeldung.Background = System.Windows.Media.Brushes.Red;
+                                lblMeldung.Content = "Es besteht bereits ein Eintrag mit dieser ID!";
+                            }
                         }
+                    }
+                    else
+                    {
+                        lblMeldung.Background = System.Windows.Media.Brushes.Red;
+                        lblMeldung.Content = "In der angegebenen Zeit existiert bereits ein Einsatz!";
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Der Einsatz liegt nicht in der Projek!");
+                    lblMeldung.Background = System.Windows.Media.Brushes.Red;
+                    lblMeldung.Content = "Der Einsatz liegt nicht in der Projekzeit!";
                 }
             }
             catch (Exception e)
             {
-                MessageBox.Show("Es wurden nicht alle Felder ausgefühlt!");
+                lblMeldung.Background = System.Windows.Media.Brushes.Red;
+                lblMeldung.Content = "Es wurden nicht alle Felder ausgefühlt!";
             }
         }
 
@@ -109,7 +149,7 @@ namespace M120_LB2_FS16
             return randomColor;
         }
 
-        
+
     }
 }
 
