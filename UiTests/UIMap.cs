@@ -1,4 +1,4 @@
-﻿namespace Test
+﻿namespace UiTests
 {
     using System;
     using System.Collections.Generic;

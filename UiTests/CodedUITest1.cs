@@ -10,10 +10,10 @@ using Microsoft.VisualStudio.TestTools.UITest.Extension;
 using Keyboard = Microsoft.VisualStudio.TestTools.UITesting.Keyboard;
 
 
-namespace Test
+namespace UiTests
 {
     /// <summary>
-    /// Summary description for CodedUITest1
+    /// Zusammenfassungsbeschreibung für CodedUITest1
     /// </summary>
     [CodedUITest]
     public class CodedUITest1
@@ -31,54 +31,54 @@ namespace Test
         [TestMethod]
         public void CreateEinsatzUiTest()
         {
-            // To generate code for this test, select "Generate Code for Coded UI Test" from the shortcut menu and select one of the menu items.
-            this.UIMap.testCreateEinsatz();
+            // Wählen Sie zum Generieren von Code für den Test im Kontextmenü "Code für Coded UI-Test generieren" aus, und wählen Sie eine der Menüelemente aus.
+            this.UIMap.CreateEinsatz();
             this.UIMap.CreateEinsatz_Assert();
             this.UIMap.CloseWindow();
-
         }
 
         [TestMethod]
-        public void UpdateEinsatzUITest()
-        {
-            this.UIMap.updateEinsatz();
-            this.UIMap.updateEinsatz_Assert();
-            this.UIMap.CloseWindow();
-        }
-
-        [TestMethod]
-        public void CreateEinsatz()
+        public void UpdateEinsatzUiTest()
         {
 
-            this.UIMap.CreateEinsatzinFlaseTimespan();
-            this.UIMap.EinsatzinFalseTimespan_Assert();
+            this.UIMap.UpdateEinsatz();
+            this.UIMap.UpdateEinsatz_Assert();
             this.UIMap.CloseWindow();
 
         }
 
-        #region Additional test attributes
+        [TestMethod]
+        public void CreateEinsatzinFalseTimespanUiTest()
+        {
 
-        // You can use the following additional attributes as you write your tests:
+            this.UIMap.CreateEinsatzInFalseTimespan();
+            this.UIMap.CreateEinsatzInFalseTimespan_Assert();
+            this.UIMap.CloseWindow();
+        }
 
-        ////Use TestInitialize to run code before running each test 
+        #region Zusätzliche Testattribute
+
+        // Sie können beim Schreiben der Tests folgende zusätzliche Attribute verwenden:
+
+        ////Verwenden Sie "TestInitialize", um vor dem Ausführen der einzelnen Tests Code auszuführen 
         //[TestInitialize()]
         //public void MyTestInitialize()
         //{        
-        //    // To generate code for this test, select "Generate Code for Coded UI Test" from the shortcut menu and select one of the menu items.
+        //    // Wählen Sie zum Generieren von Code für den Test im Kontextmenü "Code für Coded UI-Test generieren" aus, und wählen Sie eine der Menüelemente aus.
         //}
 
-        ////Use TestCleanup to run code after each test has run
+        ////Verwenden Sie "TestCleanup", um nach dem Ausführen der einzelnen Tests Code auszuführen
         //[TestCleanup()]
         //public void MyTestCleanup()
         //{        
-        //    // To generate code for this test, select "Generate Code for Coded UI Test" from the shortcut menu and select one of the menu items.
+        //    // Wählen Sie zum Generieren von Code für den Test im Kontextmenü "Code für Coded UI-Test generieren" aus, und wählen Sie eine der Menüelemente aus.
         //}
 
         #endregion
 
         /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
+        ///Dient zum Abrufen oder Festlegen des Textkontexts, der Informationen über
+        ///den aktuellen Testlauf und dessen Funktionalität bereitstellt.
         ///</summary>
         public TestContext TestContext
         {

@@ -1,28 +1,28 @@
 <?xml version="1.0"?>
-<UITest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="" Id="03a2fefc-91fd-4233-a7e9-35006e4f3c34" AssemblyVersion="14.0.23107.0" Version="1.0" xmlns="http://schemas.microsoft.com/VisualStudio/TeamTest/UITest/2010">
+<UITest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="" Id="481f78a3-1f67-4620-95bc-782231f94607" AssemblyVersion="14.0.23107.0" Version="1.0" xmlns="http://schemas.microsoft.com/VisualStudio/TeamTest/UITest/2010">
   <Configuration>
     <Group Name="IE">
       <Setting Name="Version" Value="9.11.9600.18321" WarningLevel="1" />
       <Setting Name="InformationBar" WarningLevel="1" />
       <Setting Name="AutoCompletePassword" WarningLevel="1" />
-      <Setting Name="AutoCompleteForm" Value="no" WarningLevel="1" />
+      <Setting Name="AutoCompleteForm" WarningLevel="1" />
       <Setting Name="DefaultBrowser" Value="IEXPLORE.EXE" WarningLevel="1" />
-      <Setting Name="PopupBlocker" Value="1" WarningLevel="1" />
+      <Setting Name="PopupBlocker" Value="yes" WarningLevel="1" />
       <Setting Name="TabbedBrowsing" WarningLevel="2" />
       <Setting Name="InternetZoneSecurity" Value="66816" WarningLevel="2" />
-      <Setting Name="IntranetZoneSecurity" Value="0" WarningLevel="2" />
+      <Setting Name="IntranetZoneSecurity" Value="69632" WarningLevel="2" />
       <Setting Name="TrustedZoneSecurity" Value="70912" WarningLevel="2" />
       <Setting Name="RestrictedZoneSecurity" Value="73728" WarningLevel="2" />
       <Setting Name="PhishingFilter" WarningLevel="1" />
       <Setting Name="EnhancedSecurityConfiguration" WarningLevel="1" />
     </Group>
     <Group Name="OS">
-      <Setting Name="Name" Value="Microsoft Windows 8.1 Enterprise" WarningLevel="2" />
+      <Setting Name="Name" Value="Microsoft Windows 8.1 Pro" WarningLevel="2" />
       <Setting Name="Version" Value="Microsoft Windows NT 6.3.9600.0" WarningLevel="2" />
       <Setting Name="IsUserAdmin" Value="False" WarningLevel="2" />
       <Setting Name="Is64BitOperatingSystem" Value="True" WarningLevel="2" />
       <Setting Name="IsTerminalServerSession" Value="False" WarningLevel="2" />
-      <Setting Name="OSLanguage" Value="1033" WarningLevel="1" />
+      <Setting Name="OSLanguage" Value="1031" WarningLevel="1" />
       <Setting Name="UserLocale" Value="2055" WarningLevel="1" />
       <Setting Name="DragFullWindows" Value="True" WarningLevel="2" />
       <Setting Name="ScreenResolutionWidth" Value="1920" WarningLevel="2" />
@@ -45,7 +45,7 @@
       <ParameterName />
       <ModifierKeys>None</ModifierKeys>
       <IsGlobalHotkey>false</IsGlobalHotkey>
-      <Location X="52" Y="12" />
+      <Location X="23" Y="5" />
       <WheelDirection>0</WheelDirection>
       <ActionType>Click</ActionType>
       <MouseButton>Left</MouseButton>
@@ -84,12 +84,12 @@
       <ParameterName />
       <ModifierKeys>None</ModifierKeys>
       <IsGlobalHotkey>false</IsGlobalHotkey>
-      <Location X="206" Y="18" />
+      <Location X="285" Y="15" />
       <WheelDirection>0</WheelDirection>
       <ActionType>Click</ActionType>
       <MouseButton>Left</MouseButton>
     </MouseAction>
-    <TestStepMarkerAction Comment="" MarkerInformation="testCreateEinsatz">
+    <TestStepMarkerAction Comment="" MarkerInformation="CreateEinsatz">
       <ParameterName />
       <StepId>-1</StepId>
       <Direction>Start</Direction>
@@ -98,15 +98,15 @@
       <WorkItemId>0</WorkItemId>
       <MarkerRegionType>Action</MarkerRegionType>
     </TestStepMarkerAction>
-    <AssertAction UIObjectName="UIMap.UIPersonalPlanerWindow.UIEinsaetzeCRUCustom.UIDerEinsatzwurdeerfolText.UIDerEinsatzwurdeerfolText1">
+    <AssertAction UIObjectName="UIMap.UIPersonalPlanerWindow.UIEinsaetzeCRUCustom.UIDerEinsatzwurdeerfolText">
       <ParameterName />
-      <PropertyName>Name</PropertyName>
+      <PropertyName>DisplayText</PropertyName>
       <ExpectedValue>Der Einsatz wurde erfolgreich erstellt!</ExpectedValue>
       <MessageOnValidationFailure />
       <Type>String</Type>
       <PropertyCondition>AreEqual</PropertyCondition>
     </AssertAction>
-    <TestStepMarkerAction Comment="Einsatz erfolgreich erstellen" MarkerInformation="CreateEinsatz_Assert">
+    <TestStepMarkerAction Comment="" MarkerInformation="CreateEinsatz_Assert">
       <ParameterName />
       <StepId>-1</StepId>
       <Direction>Start</Direction>
@@ -119,7 +119,7 @@
       <ParameterName />
       <ModifierKeys>None</ModifierKeys>
       <IsGlobalHotkey>false</IsGlobalHotkey>
-      <Location X="21" Y="8" />
+      <Location X="34" Y="14" />
       <WheelDirection>0</WheelDirection>
       <ActionType>Click</ActionType>
       <MouseButton>Left</MouseButton>
@@ -137,16 +137,16 @@
       <ParameterName />
       <ModifierKeys>None</ModifierKeys>
       <IsGlobalHotkey>false</IsGlobalHotkey>
-      <Location X="76" Y="10" />
+      <Location X="81" Y="7" />
       <WheelDirection>0</WheelDirection>
       <ActionType>Click</ActionType>
       <MouseButton>Left</MouseButton>
     </MouseAction>
-    <MouseAction UIObjectName="UIMap.UIPersonalPlanerWindow.UILvEinsaetzeCustom.UIDgEinsaetzeTable.UIItem1Row.UIProjektZeiterfassungCell.UIProjektZeiterfassungText">
+    <MouseAction UIObjectName="UIMap.UIPersonalPlanerWindow.UILvEinsaetzeCustom.UIDgEinsaetzeTable.UIItem1Row.UIAffolterCell.UIAffolterText">
       <ParameterName />
       <ModifierKeys>None</ModifierKeys>
       <IsGlobalHotkey>false</IsGlobalHotkey>
-      <Location X="132" Y="6" />
+      <Location X="62" Y="6" />
       <WheelDirection>0</WheelDirection>
       <ActionType>DoubleClick</ActionType>
       <MouseButton>Left</MouseButton>
@@ -165,12 +165,12 @@
       <ParameterName />
       <ModifierKeys>None</ModifierKeys>
       <IsGlobalHotkey>false</IsGlobalHotkey>
-      <Location X="209" Y="19" />
+      <Location X="268" Y="13" />
       <WheelDirection>0</WheelDirection>
       <ActionType>Click</ActionType>
       <MouseButton>Left</MouseButton>
     </MouseAction>
-    <TestStepMarkerAction Comment="updaten eines Einsatzes" MarkerInformation="updateEinsatz">
+    <TestStepMarkerAction Comment="" MarkerInformation="UpdateEinsatz">
       <ParameterName />
       <StepId>-1</StepId>
       <Direction>Start</Direction>
@@ -183,11 +183,11 @@
       <ParameterName />
       <PropertyName>DisplayText</PropertyName>
       <ExpectedValue>Der Einsatz wurde erfolgreich geändert!</ExpectedValue>
-      <MessageOnValidationFailure>wurde nicht geändert</MessageOnValidationFailure>
+      <MessageOnValidationFailure />
       <Type>String</Type>
       <PropertyCondition>AreEqual</PropertyCondition>
     </AssertAction>
-    <TestStepMarkerAction Comment="" MarkerInformation="updateEinsatz_Assert">
+    <TestStepMarkerAction Comment="" MarkerInformation="UpdateEinsatz_Assert">
       <ParameterName />
       <StepId>-1</StepId>
       <Direction>Start</Direction>
@@ -196,29 +196,11 @@
       <WorkItemId>0</WorkItemId>
       <MarkerRegionType>Assertion</MarkerRegionType>
     </TestStepMarkerAction>
-    <MouseAction UIObjectName="UIMap.UIPersonalPlanerWindow1.UISchließenButton">
-      <ParameterName />
-      <ModifierKeys>None</ModifierKeys>
-      <IsGlobalHotkey>false</IsGlobalHotkey>
-      <Location X="25" Y="15" />
-      <WheelDirection>0</WheelDirection>
-      <ActionType>Click</ActionType>
-      <MouseButton>Left</MouseButton>
-    </MouseAction>
-    <TestStepMarkerAction Comment="" MarkerInformation="CloseWindow2">
-      <ParameterName />
-      <StepId>-1</StepId>
-      <Direction>Start</Direction>
-      <Outcome />
-      <Disabled>false</Disabled>
-      <WorkItemId>0</WorkItemId>
-      <MarkerRegionType>Action</MarkerRegionType>
-    </TestStepMarkerAction>
     <MouseAction UIObjectName="UIMap.UIPersonalPlanerWindow.UIEinsatzerstellenButton">
       <ParameterName />
       <ModifierKeys>None</ModifierKeys>
       <IsGlobalHotkey>false</IsGlobalHotkey>
-      <Location X="40" Y="6" />
+      <Location X="25" Y="11" />
       <WheelDirection>0</WheelDirection>
       <ActionType>Click</ActionType>
       <MouseButton>Left</MouseButton>
@@ -257,12 +239,12 @@
       <ParameterName />
       <ModifierKeys>None</ModifierKeys>
       <IsGlobalHotkey>false</IsGlobalHotkey>
-      <Location X="218" Y="19" />
+      <Location X="220" Y="15" />
       <WheelDirection>0</WheelDirection>
       <ActionType>Click</ActionType>
       <MouseButton>Left</MouseButton>
     </MouseAction>
-    <TestStepMarkerAction Comment="" MarkerInformation="CreateEinsatzinFlaseTimespan">
+    <TestStepMarkerAction Comment="" MarkerInformation="CreateEinsatzInFalseTimespan">
       <ParameterName />
       <StepId>-1</StepId>
       <Direction>Start</Direction>
@@ -279,7 +261,7 @@
       <Type>String</Type>
       <PropertyCondition>AreEqual</PropertyCondition>
     </AssertAction>
-    <TestStepMarkerAction Comment="" MarkerInformation="EinsatzinFalseTimespan_Assert">
+    <TestStepMarkerAction Comment="" MarkerInformation="CreateEinsatzInFalseTimespan_Assert">
       <ParameterName />
       <StepId>-1</StepId>
       <Direction>Start</Direction>
@@ -294,7 +276,7 @@
   <Maps>
     <UIMap Id="UIMap">
       <TopLevelWindows>
-        <TopLevelWindow ControlType="Window" Id="UIPersonalPlanerWindow" FriendlyName="PersonalPlaner" SpecialControlType="None" SessionId="2688198">
+        <TopLevelWindow ControlType="Window" Id="UIPersonalPlanerWindow" FriendlyName="PersonalPlaner" SpecialControlType="None" SessionId="133392">
           <TechnologyName>UIA</TechnologyName>
           <WindowTitles>
             <WindowTitle>PersonalPlaner</WindowTitle>
@@ -307,6 +289,19 @@
           </AndCondition>
           <SupportLevel>0</SupportLevel>
           <Descendants>
+            <UIObject ControlType="Button" Id="UIEinsatzerstellenButton" FriendlyName="Einsatz erstellen" SpecialControlType="None">
+              <TechnologyName>UIA</TechnologyName>
+              <WindowTitles>
+                <WindowTitle>PersonalPlaner</WindowTitle>
+              </WindowTitles>
+              <AndCondition>
+                <PropertyCondition Name="FrameworkId">WPF</PropertyCondition>
+                <PropertyCondition Name="ControlType">Button</PropertyCondition>
+                <PropertyCondition Name="AutomationId">btnCreateEinsatz</PropertyCondition>
+              </AndCondition>
+              <SupportLevel>0</SupportLevel>
+              <Descendants />
+            </UIObject>
             <UIObject ControlType="Custom" Id="UIEinsaetzeCRUCustom" FriendlyName="EinsaetzeCRU" SpecialControlType="None">
               <TechnologyName>UIA</TechnologyName>
               <WindowTitles>
@@ -320,45 +315,6 @@
               </AndCondition>
               <SupportLevel>0</SupportLevel>
               <Descendants>
-                <UIObject ControlType="ComboBox" Id="UICbZeitAufwandComboBox" FriendlyName="cbZeitAufwand" SpecialControlType="None">
-                  <TechnologyName>UIA</TechnologyName>
-                  <WindowTitles>
-                    <WindowTitle>PersonalPlaner</WindowTitle>
-                  </WindowTitles>
-                  <AndCondition>
-                    <PropertyCondition Name="FrameworkId">WPF</PropertyCondition>
-                    <PropertyCondition Name="ControlType">ComboBox</PropertyCondition>
-                    <PropertyCondition Name="AutomationId">cbZeitAufwand</PropertyCondition>
-                  </AndCondition>
-                  <SupportLevel>0</SupportLevel>
-                  <Descendants />
-                </UIObject>
-                <UIObject ControlType="DatePicker" Id="UIDPdateDatePicker" FriendlyName="dPdate" SpecialControlType="None">
-                  <TechnologyName>UIA</TechnologyName>
-                  <WindowTitles>
-                    <WindowTitle>PersonalPlaner</WindowTitle>
-                  </WindowTitles>
-                  <AndCondition>
-                    <PropertyCondition Name="FrameworkId">WPF</PropertyCondition>
-                    <PropertyCondition Name="ControlType">DatePicker</PropertyCondition>
-                    <PropertyCondition Name="AutomationId">dPdate</PropertyCondition>
-                  </AndCondition>
-                  <SupportLevel>0</SupportLevel>
-                  <Descendants />
-                </UIObject>
-                <UIObject ControlType="Button" Id="UISpeichernButton" FriendlyName="Speichern" SpecialControlType="None">
-                  <TechnologyName>UIA</TechnologyName>
-                  <WindowTitles>
-                    <WindowTitle>PersonalPlaner</WindowTitle>
-                  </WindowTitles>
-                  <AndCondition>
-                    <PropertyCondition Name="FrameworkId">WPF</PropertyCondition>
-                    <PropertyCondition Name="ControlType">Button</PropertyCondition>
-                    <PropertyCondition Name="AutomationId">btnSave</PropertyCondition>
-                  </AndCondition>
-                  <SupportLevel>0</SupportLevel>
-                  <Descendants />
-                </UIObject>
                 <UIObject ControlType="ComboBox" Id="UICbEinsatzComboBox" FriendlyName="cbEinsatz" SpecialControlType="None">
                   <TechnologyName>UIA</TechnologyName>
                   <WindowTitles>
@@ -411,6 +367,45 @@
                   <SupportLevel>0</SupportLevel>
                   <Descendants />
                 </UIObject>
+                <UIObject ControlType="ComboBox" Id="UICbZeitAufwandComboBox" FriendlyName="cbZeitAufwand" SpecialControlType="None">
+                  <TechnologyName>UIA</TechnologyName>
+                  <WindowTitles>
+                    <WindowTitle>PersonalPlaner</WindowTitle>
+                  </WindowTitles>
+                  <AndCondition>
+                    <PropertyCondition Name="FrameworkId">WPF</PropertyCondition>
+                    <PropertyCondition Name="ControlType">ComboBox</PropertyCondition>
+                    <PropertyCondition Name="AutomationId">cbZeitAufwand</PropertyCondition>
+                  </AndCondition>
+                  <SupportLevel>0</SupportLevel>
+                  <Descendants />
+                </UIObject>
+                <UIObject ControlType="DatePicker" Id="UIDPdateDatePicker" FriendlyName="dPdate" SpecialControlType="None">
+                  <TechnologyName>UIA</TechnologyName>
+                  <WindowTitles>
+                    <WindowTitle>PersonalPlaner</WindowTitle>
+                  </WindowTitles>
+                  <AndCondition>
+                    <PropertyCondition Name="FrameworkId">WPF</PropertyCondition>
+                    <PropertyCondition Name="ControlType">DatePicker</PropertyCondition>
+                    <PropertyCondition Name="AutomationId">dPdate</PropertyCondition>
+                  </AndCondition>
+                  <SupportLevel>0</SupportLevel>
+                  <Descendants />
+                </UIObject>
+                <UIObject ControlType="Button" Id="UISpeichernButton" FriendlyName="Speichern" SpecialControlType="None">
+                  <TechnologyName>UIA</TechnologyName>
+                  <WindowTitles>
+                    <WindowTitle>PersonalPlaner</WindowTitle>
+                  </WindowTitles>
+                  <AndCondition>
+                    <PropertyCondition Name="FrameworkId">WPF</PropertyCondition>
+                    <PropertyCondition Name="ControlType">Button</PropertyCondition>
+                    <PropertyCondition Name="AutomationId">btnSave</PropertyCondition>
+                  </AndCondition>
+                  <SupportLevel>0</SupportLevel>
+                  <Descendants />
+                </UIObject>
                 <UIObject ControlType="Text" Id="UIDerEinsatzwurdeerfolText" FriendlyName="Der Einsatz wurde erfolgreich erstellt!" SpecialControlType="None">
                   <TechnologyName>UIA</TechnologyName>
                   <WindowTitles>
@@ -422,39 +417,9 @@
                     <PropertyCondition Name="AutomationId">lblMeldung</PropertyCondition>
                   </AndCondition>
                   <SupportLevel>0</SupportLevel>
-                  <Descendants>
-                    <UIObject ControlType="Text" Id="UIDerEinsatzwurdeerfolText1" FriendlyName="Der Einsatz wurde erfolgreich erstellt!" SpecialControlType="None">
-                      <TechnologyName>UIA</TechnologyName>
-                      <WindowTitles>
-                        <WindowTitle>PersonalPlaner</WindowTitle>
-                      </WindowTitles>
-                      <SearchConfigurations>
-                        <SearchConfiguration>Distinct</SearchConfiguration>
-                      </SearchConfigurations>
-                      <AndCondition>
-                        <PropertyCondition Name="FrameworkId">WPF</PropertyCondition>
-                        <PropertyCondition Name="ControlType">Text</PropertyCondition>
-                        <PropertyCondition Name="Name">Der Einsatz wurde erfolgreich erstellt!</PropertyCondition>
-                      </AndCondition>
-                      <SupportLevel>0</SupportLevel>
-                      <Descendants />
-                    </UIObject>
-                  </Descendants>
+                  <Descendants />
                 </UIObject>
               </Descendants>
-            </UIObject>
-            <UIObject ControlType="Button" Id="UIEinsatzerstellenButton" FriendlyName="Einsatz erstellen" SpecialControlType="None">
-              <TechnologyName>UIA</TechnologyName>
-              <WindowTitles>
-                <WindowTitle>PersonalPlaner</WindowTitle>
-              </WindowTitles>
-              <AndCondition>
-                <PropertyCondition Name="FrameworkId">WPF</PropertyCondition>
-                <PropertyCondition Name="ControlType">Button</PropertyCondition>
-                <PropertyCondition Name="AutomationId">btnCreateEinsatz</PropertyCondition>
-              </AndCondition>
-              <SupportLevel>0</SupportLevel>
-              <Descendants />
             </UIObject>
             <UIObject ControlType="Button" Id="UIAlleEinsätzeButton" FriendlyName="Alle Einsätze" SpecialControlType="None">
               <TechnologyName>UIA</TechnologyName>
@@ -509,19 +474,19 @@
                       </AndCondition>
                       <SupportLevel>0</SupportLevel>
                       <Descendants>
-                        <UIObject ControlType="Cell" Id="UIProjektZeiterfassungCell" FriendlyName="Projekt Zeiterfassung" SpecialControlType="None">
+                        <UIObject ControlType="Cell" Id="UIAffolterCell" FriendlyName="Affolter" SpecialControlType="None">
                           <TechnologyName>UIA</TechnologyName>
                           <WindowTitles>
                             <WindowTitle>PersonalPlaner</WindowTitle>
                           </WindowTitles>
                           <AndCondition>
-                            <PropertyCondition Name="ColumnHeader">Projekt</PropertyCondition>
+                            <PropertyCondition Name="ColumnHeader">Mitarbeiter</PropertyCondition>
                             <PropertyCondition Name="ControlType">Cell</PropertyCondition>
                             <PropertyCondition Name="FrameworkId">WPF</PropertyCondition>
                           </AndCondition>
                           <SupportLevel>0</SupportLevel>
                           <Descendants>
-                            <UIObject ControlType="Text" Id="UIProjektZeiterfassungText" FriendlyName="Projekt Zeiterfassung" SpecialControlType="None">
+                            <UIObject ControlType="Text" Id="UIAffolterText" FriendlyName="Affolter" SpecialControlType="None">
                               <TechnologyName>UIA</TechnologyName>
                               <WindowTitles>
                                 <WindowTitle>PersonalPlaner</WindowTitle>
@@ -529,7 +494,7 @@
                               <AndCondition>
                                 <PropertyCondition Name="FrameworkId">WPF</PropertyCondition>
                                 <PropertyCondition Name="ControlType">Text</PropertyCondition>
-                                <PropertyCondition Name="Name">Projekt Zeiterfassung</PropertyCondition>
+                                <PropertyCondition Name="Name">Affolter</PropertyCondition>
                               </AndCondition>
                               <SupportLevel>0</SupportLevel>
                               <Descendants />
@@ -544,101 +509,7 @@
             </UIObject>
           </Descendants>
         </TopLevelWindow>
-        <TopLevelWindow ControlType="Window" Id="UIOKWindow" FriendlyName="OK" SpecialControlType="None" SessionId="2822848">
-          <TechnologyName>MSAA</TechnologyName>
-          <WindowTitles>
-            <WindowTitle>OK</WindowTitle>
-          </WindowTitles>
-          <SearchConfigurations>
-            <SearchConfiguration>VisibleOnly</SearchConfiguration>
-          </SearchConfigurations>
-          <AndCondition Id="SearchCondition">
-            <PropertyCondition Name="Name">OK</PropertyCondition>
-            <PropertyCondition Name="ClassName">Button</PropertyCondition>
-            <PropertyCondition Name="ControlType">Window</PropertyCondition>
-          </AndCondition>
-          <SupportLevel>0</SupportLevel>
-          <Descendants>
-            <UIObject ControlType="Button" Id="UIOKButton" FriendlyName="OK" SpecialControlType="None">
-              <TechnologyName>MSAA</TechnologyName>
-              <WindowTitles>
-                <WindowTitle>OK</WindowTitle>
-              </WindowTitles>
-              <SearchConfigurations>
-                <SearchConfiguration>VisibleOnly</SearchConfiguration>
-              </SearchConfigurations>
-              <AndCondition Id="SearchCondition">
-                <PropertyCondition Name="Name">OK</PropertyCondition>
-                <PropertyCondition Name="ControlType">Button</PropertyCondition>
-              </AndCondition>
-              <SupportLevel>0</SupportLevel>
-              <Descendants />
-            </UIObject>
-          </Descendants>
-        </TopLevelWindow>
-        <TopLevelWindow ControlType="Window" Id="UIDebugWindow" FriendlyName="Debug" SpecialControlType="None" SessionId="1378692">
-          <TechnologyName>MSAA</TechnologyName>
-          <WindowTitles>
-            <WindowTitle>Debug</WindowTitle>
-          </WindowTitles>
-          <SearchConfigurations>
-            <SearchConfiguration>VisibleOnly</SearchConfiguration>
-          </SearchConfigurations>
-          <AndCondition Id="SearchCondition">
-            <PropertyCondition Name="Name">Debug</PropertyCondition>
-            <PropertyCondition Name="ClassName">CabinetWClass</PropertyCondition>
-            <PropertyCondition Name="ControlType">Window</PropertyCondition>
-          </AndCondition>
-          <SupportLevel>0</SupportLevel>
-          <Descendants>
-            <UIObject ControlType="Window" Id="UIItemWindow" FriendlyName="" SpecialControlType="None">
-              <TechnologyName>MSAA</TechnologyName>
-              <WindowTitles>
-                <WindowTitle>Debug</WindowTitle>
-              </WindowTitles>
-              <SearchConfigurations>
-                <SearchConfiguration>VisibleOnly</SearchConfiguration>
-              </SearchConfigurations>
-              <AndCondition Id="SearchCondition">
-                <PropertyCondition Name="AccessibleName">Elementansicht</PropertyCondition>
-                <PropertyCondition Name="ClassName">DirectUIHWND</PropertyCondition>
-                <PropertyCondition Name="ControlType">Window</PropertyCondition>
-              </AndCondition>
-              <SupportLevel>0</SupportLevel>
-              <Descendants>
-                <UIObject ControlType="ListItem" Id="UIM120LB2FS16exeListItem" FriendlyName="M120-LB2-FS16.exe" SpecialControlType="None">
-                  <TechnologyName>MSAA</TechnologyName>
-                  <WindowTitles>
-                    <WindowTitle>Debug</WindowTitle>
-                  </WindowTitles>
-                  <AndCondition Id="SearchCondition">
-                    <PropertyCondition Name="Name">M120-LB2-FS16.exe</PropertyCondition>
-                    <PropertyCondition Name="ControlType">ListItem</PropertyCondition>
-                  </AndCondition>
-                  <SupportLevel>0</SupportLevel>
-                  <Descendants>
-                    <UIObject ControlType="Edit" Id="UINameEdit" FriendlyName="Name" SpecialControlType="None">
-                      <TechnologyName>MSAA</TechnologyName>
-                      <WindowTitles>
-                        <WindowTitle>Debug</WindowTitle>
-                      </WindowTitles>
-                      <SearchConfigurations>
-                        <SearchConfiguration>VisibleOnly</SearchConfiguration>
-                      </SearchConfigurations>
-                      <AndCondition Id="SearchCondition">
-                        <PropertyCondition Name="Name">Name</PropertyCondition>
-                        <PropertyCondition Name="ControlType">Edit</PropertyCondition>
-                      </AndCondition>
-                      <SupportLevel>0</SupportLevel>
-                      <Descendants />
-                    </UIObject>
-                  </Descendants>
-                </UIObject>
-              </Descendants>
-            </UIObject>
-          </Descendants>
-        </TopLevelWindow>
-        <TopLevelWindow ControlType="Window" Id="UIPersonalPlanerWindow1" FriendlyName="PersonalPlaner" SpecialControlType="None" SessionId="8589876">
+        <TopLevelWindow ControlType="Window" Id="UIPersonalPlanerWindow1" FriendlyName="PersonalPlaner" SpecialControlType="None" SessionId="133392">
           <TechnologyName>MSAA</TechnologyName>
           <WindowTitles>
             <WindowTitle>PersonalPlaner</WindowTitle>
