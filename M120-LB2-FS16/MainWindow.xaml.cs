@@ -1,33 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing.Printing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace M120_LB2_FS16
 {
     /// <summary>
     /// Interaktionslogik für MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
-        private EinsaetzeCRu EinsaetzeCRU;
-        private ListView lvEinsaetze;
-        private KalenderWeek kw;
+        private EinsaetzeCRu _einsaetzeCru;
+        private ListView _lvEinsaetze;
+        private KalenderWeek _kw;
 
         public MainWindow()
         {
-            datenBereitstellen();
+            DatenBereitstellen();
             InitializeComponent();
         }
 
@@ -35,84 +24,101 @@ namespace M120_LB2_FS16
 
         private void demoDatenMitarbeiter()
         {
-            Mitarbeiter ma1 = new Mitarbeiter();
-            ma1.ID = 1;
-            ma1.Name = "Affolter";
-            ma1.Vorname = "Anton";
-            ma1.IstAktiv = true;
-            ma1.Farbe = Colors.Aqua;
+            Mitarbeiter ma1 = new Mitarbeiter
+            {
+                ID = 1,
+                Name = "Affolter",
+                Vorname = "Anton",
+                IstAktiv = true,
+                Farbe = Colors.Aqua
+            };
             Bibliothek.Mitarbeiter_Neu(ma1);
 
-            Mitarbeiter ma2 = new Mitarbeiter();
-            ma2.ID = 2;
-            ma2.Name = "Bangerter";
-            ma2.Vorname = "Beat";
-            ma2.IstAktiv = true;
-            ma2.Farbe = Colors.BlanchedAlmond;
+            Mitarbeiter ma2 = new Mitarbeiter
+            {
+                ID = 2,
+                Name = "Bangerter",
+                Vorname = "Beat",
+                IstAktiv = true,
+                Farbe = Colors.BlanchedAlmond
+            };
             Bibliothek.Mitarbeiter_Neu(ma2);
         }
 
         private void demoDatenProjekte()
         {
-            Projekt p1 = new Projekt();
-            p1.ID = 1;
-            p1.Name = "Projekt Zeiterfassung";
-            p1.IstAktiv = true;
-            p1.StartDatum = new DateTime(2016, 3, 1);
-            p1.EndDatum = new DateTime(2016, 10, 1);
-            p1.GesamtZeitStunden = 120;
-            p1.OffeneZeitStunden = 120;
-            p1.Farbe = Colors.Violet;
+            Projekt p1 = 
+                new Projekt
+            {
+                ID = 1,
+                Name = "Projekt Zeiterfassung",
+                IstAktiv = true,
+                StartDatum = new DateTime(2016, 3, 1),
+                EndDatum = new DateTime(2016, 10, 1),
+                GesamtZeitStunden = 120,
+                OffeneZeitStunden = 120,
+                Farbe = Colors.Violet
+            };
             Bibliothek.Projekt_Neu(p1);
 
-            Projekt p2 = new Projekt();
-            p2.ID = 2;
-            p2.Name = "Projekt YellowLabel";
-            p2.IstAktiv = true;
-            p2.StartDatum = new DateTime(2016, 4, 2);
-            p2.EndDatum = new DateTime(2016, 7, 30);
-            p2.GesamtZeitStunden = 80;
-            p2.OffeneZeitStunden = 80;
-            p2.Farbe = Colors.Yellow;
+            Projekt p2 = new Projekt
+            {
+                ID = 2,
+                Name = "Projekt YellowLabel",
+                IstAktiv = true,
+                StartDatum = new DateTime(2016, 4, 2),
+                EndDatum = new DateTime(2016, 7, 30),
+                GesamtZeitStunden = 80,
+                OffeneZeitStunden = 80,
+                Farbe = Colors.Yellow
+            };
             Bibliothek.Projekt_Neu(p2);
         }
 
         private void demoDatenEinsaetze()
         {
-            Einsatz e1 = new Einsatz();
-            e1.ID = 1;
-            e1.Mitarbeiter = Bibliothek.Mitarbeiter_nach_ID(1);
-            e1.Projekt = Bibliothek.Projekt_nach_ID(1);
-            e1.Start = new DateTime(2016, 6, 7, 8, 0, 0);
-            e1.Ende = new DateTime(2016, 6, 7, 15, 0, 0);
+            Einsatz e1 = new Einsatz
+            {
+                ID = 1,
+                Mitarbeiter = Bibliothek.Mitarbeiter_nach_ID(1),
+                Projekt = Bibliothek.Projekt_nach_ID(1),
+                Start = new DateTime(2016, 6, 7, 8, 0, 0),
+                Ende = new DateTime(2016, 6, 7, 15, 0, 0)
+            };
             Bibliothek.EinsatzNeu(e1);
 
-            Einsatz e2 = new Einsatz();
-            e2.ID = 2;
-            e2.Mitarbeiter = Bibliothek.Mitarbeiter_nach_ID(1);
-            e2.Projekt = Bibliothek.Projekt_nach_ID(2);
-            e2.Start = new DateTime(2016, 6, 10, 11, 0, 0);
-            e2.Ende = new DateTime(2016, 6, 10, 18, 0, 0);
+            Einsatz e2 = new Einsatz
+            {
+                ID = 2,
+                Mitarbeiter = Bibliothek.Mitarbeiter_nach_ID(1),
+                Projekt = Bibliothek.Projekt_nach_ID(2),
+                Start = new DateTime(2016, 6, 10, 11, 0, 0),
+                Ende = new DateTime(2016, 6, 10, 18, 0, 0)
+            };
             Bibliothek.EinsatzNeu(e2);
 
-            Einsatz e3 = new Einsatz();
-            e3.ID = 3;
-            e3.Mitarbeiter = Bibliothek.Mitarbeiter_nach_ID(2);
-            e3.Projekt = Bibliothek.Projekt_nach_ID(1);
-            e3.Start = new DateTime(2016, 6, 14, 10, 0, 0);
-            e3.Ende = new DateTime(2016, 6, 14, 14, 0, 0);
+            Einsatz e3 = new Einsatz
+            {
+                ID = 3,
+                Mitarbeiter = Bibliothek.Mitarbeiter_nach_ID(2),
+                Projekt = Bibliothek.Projekt_nach_ID(1),
+                Start = new DateTime(2016, 6, 14, 10, 0, 0),
+                Ende = new DateTime(2016, 6, 14, 14, 0, 0)
+            };
             Bibliothek.EinsatzNeu(e3);
 
-            Einsatz e4 = new Einsatz();
-            e4.ID = 4;
-            e4.Mitarbeiter = Bibliothek.Mitarbeiter_nach_ID(2);
-            e4.Projekt = Bibliothek.Projekt_nach_ID(1);
-            e4.Start = new DateTime(2016, 6, 15, 10, 0, 0);
-            e4.Ende = new DateTime(2016, 6, 15, 14, 0, 0);
+            Einsatz e4 = new Einsatz
+            {
+                ID = 4,
+                Mitarbeiter = Bibliothek.Mitarbeiter_nach_ID(2),
+                Projekt = Bibliothek.Projekt_nach_ID(1),
+                Start = new DateTime(2016, 6, 15, 10, 0, 0),
+                Ende = new DateTime(2016, 6, 15, 14, 0, 0)
+            };
             Bibliothek.EinsatzNeu(e4);
         }
 
-        private void datenBereitstellen()
+        private void DatenBereitstellen()
         {
             demoDatenMitarbeiter();
             demoDatenProjekte();
@@ -123,96 +129,102 @@ namespace M120_LB2_FS16
 
         private void btnCreateEinsatz_Click(object sender, RoutedEventArgs e)
         {
-            EinsaetzeCRU = createEinsatzCRU();
+            _einsaetzeCru = CreateEinsatzCru();
             Content.Children.Clear();
-            Content.Children.Add(EinsaetzeCRU);
+            Content.Children.Add(_einsaetzeCru);
         }
 
-        private EinsaetzeCRu createEinsatzCRU()
+        private EinsaetzeCRu CreateEinsatzCru()
         {
-            EinsaetzeCRU = new EinsaetzeCRu();
-            EinsaetzeCRU.Name = "EinsaetzeCRU";
-            EinsaetzeCRU.HorizontalAlignment = HorizontalAlignment.Stretch;
-            EinsaetzeCRU.Margin = new Thickness(10, 2, 0, 0);
-            EinsaetzeCRU.VerticalAlignment = VerticalAlignment.Top;
-            EinsaetzeCRU.lblID.Content = Bibliothek.uIDGenarator().ToString();
-            return EinsaetzeCRU;
+            _einsaetzeCru = new EinsaetzeCRu
+            {
+                Name = "EinsaetzeCRU",
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                Margin = new Thickness(10, 2, 0, 0),
+                VerticalAlignment = VerticalAlignment.Top,
+                lblID = {Content = Bibliothek.uIDGenarator().ToString()}
+            };
+            return _einsaetzeCru;
         }
 
         private void btnAllEinsaetze_Click(object sender, RoutedEventArgs e)
         {
-            lvEinsaetze = createListView();
+            _lvEinsaetze = CreateListView();
             Content.Children.Clear();
-            Content.Children.Add(lvEinsaetze);
+            Content.Children.Add(_lvEinsaetze);
         }
 
-        private ListView createListView()
+        private ListView CreateListView()
         {
-            lvEinsaetze = new ListView();
-            lvEinsaetze.Name = "lvEinsaetze";
-            lvEinsaetze.HorizontalAlignment = HorizontalAlignment.Stretch;
-            lvEinsaetze.Margin = new Thickness(0, 0, 0, 0);
-            lvEinsaetze.VerticalAlignment = VerticalAlignment.Stretch;
-            lvEinsaetze.UpdateEinsatz += new EventHandler(showUpdateEinsatz);
-            return lvEinsaetze;
+            _lvEinsaetze = new ListView
+            {
+                Name = "lvEinsaetze",
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                Margin = new Thickness(0, 0, 0, 0),
+                VerticalAlignment = VerticalAlignment.Stretch
+            };
+            _lvEinsaetze.UpdateEinsatz += ShowUpdateEinsatz;
+            return _lvEinsaetze;
         }
 
-        public void showUpdateEinsatz(object sender, EventArgs e)
+        public void ShowUpdateEinsatz(object sender, EventArgs e)
         {
-            ListView liste = (ListView)sender;
-            showEinsatz((Einsatz)liste.dgEinsaetze.SelectedItem);
+            var liste = (ListView)sender;
+            ShowEinsatz((Einsatz)liste.dgEinsaetze.SelectedItem);
         }
 
-        public void showUpdateEinsatzfromKalender(object sender, EventArgs e)
+        public void ShowUpdateEinsatzfromKalender(object sender, EventArgs e)
         {
-            Button b = (Button) sender;
-            long id = long.Parse(b.ToolTip.ToString());
-            showEinsatz(Bibliothek.Einsatz_nach_ID(id));
+            var b = (Button) sender;
+            var id = long.Parse(b.ToolTip.ToString());
+            ShowEinsatz(Bibliothek.Einsatz_nach_ID(id));
         }
 
-        private void showEinsatz(Einsatz einsatz)
+        private void ShowEinsatz(Einsatz einsatz)
         {
-            TimeSpan zeitaufwand = einsatz.Ende - einsatz.Start;
-            string hour = einsatz.Start.Hour.ToString();
+            var zeitaufwand = einsatz.Ende - einsatz.Start;
+            var hour = einsatz.Start.Hour.ToString();
 
             if (hour == "7" || hour == "8" || hour == "9")
             {
                 hour = "0" + hour;
             }
 
-            EinsaetzeCRU = createEinsatzCRU();
+            _einsaetzeCru = CreateEinsatzCru();
 
-            EinsaetzeCRU.lblID.Content = einsatz.ID;
-            EinsaetzeCRU.cbEinsatz.SelectedItem = einsatz.Projekt;
-            EinsaetzeCRU.cbMitarbeiter.SelectedItem = einsatz.Mitarbeiter;
-            EinsaetzeCRU.cbBeginTimeHour.SelectedItem = hour;
-            EinsaetzeCRU.cbBeginTimeMin.SelectedItem = einsatz.Start.Minute.ToString() == "0" ? "00" : "30";
-            EinsaetzeCRU.cbZeitAufwand.SelectedItem = zeitaufwand.Hours.ToString();
-            EinsaetzeCRU.dPdate.SelectedDate = einsatz.Start;
-            EinsaetzeCRU.lblFarbe.Content = einsatz.Farbe.ToString();
-            EinsaetzeCRU.lblIsUpdate.Content = "true";
+            _einsaetzeCru.lblID.Content = einsatz.ID;
+            _einsaetzeCru.cbEinsatz.SelectedItem = einsatz.Projekt;
+            _einsaetzeCru.cbMitarbeiter.SelectedItem = einsatz.Mitarbeiter;
+            _einsaetzeCru.cbBeginTimeHour.SelectedItem = hour;
+            _einsaetzeCru.cbBeginTimeMin.SelectedItem = einsatz.Start.Minute.ToString() == "0" ? "00" : "30";
+            _einsaetzeCru.cbZeitAufwand.SelectedItem = zeitaufwand.Hours.ToString();
+            _einsaetzeCru.dPdate.SelectedDate = einsatz.Start;
+            _einsaetzeCru.lblFarbe.Content = einsatz.Farbe.ToString();
+            _einsaetzeCru.lblIsUpdate.Content = "true";
 
             Content.Children.Clear();
-            Content.Children.Add(EinsaetzeCRU);
+            Content.Children.Add(_einsaetzeCru);
 
         }
 
         private void btnKalender_Click(object sender, RoutedEventArgs e)
         {
-            kw = createKalenderWeek();
+            _kw = CreateKalenderWeek();
             Content.Children.Clear();
-            Content.Children.Add(kw);
+            Content.Children.Add(_kw);
         }
 
-        private KalenderWeek createKalenderWeek()
+        private KalenderWeek CreateKalenderWeek()
         {
-            kw = new KalenderWeek();
-            kw.Name = "KalenderView";
-            kw.HorizontalAlignment = HorizontalAlignment.Stretch;
-            kw.Margin = new Thickness(0, 0, 0, 0);
-            kw.VerticalAlignment = VerticalAlignment.Stretch;
-            kw.UpdateEinsatzFromKalender += new EventHandler(showUpdateEinsatzfromKalender);
-            return kw;
+            _kw = new KalenderWeek
+            {
+                Name = "KalenderView",
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                Margin = new Thickness(0, 0, 0, 0),
+                VerticalAlignment = VerticalAlignment.Stretch
+            };
+            _kw.UpdateEinsatzFromKalender += ShowUpdateEinsatzfromKalender;
+            return _kw;
         }
     }
 }

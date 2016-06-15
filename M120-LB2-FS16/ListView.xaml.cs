@@ -1,55 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace M120_LB2_FS16
 {
     /// <summary>
     /// Interaktionslogik für ListView.xaml
     /// </summary>
-    public partial class ListView : UserControl
+    public partial class ListView
     {
-        private List<Einsatz> einsatzListe;
+        private List<Einsatz> _einsatzListe;
         public event EventHandler UpdateEinsatz;
 
         public ListView()
         {
             InitializeComponent();
-            setEinsatzListe();
-            refreshListView();
+            SetEinsatzListe();
+            RefreshListView();
         }
 
-        public void setEinsatzListe()
+        public void SetEinsatzListe()
         {
-            einsatzListe = Bibliothek.Einsatz_Alle();
+            _einsatzListe = Bibliothek.Einsatz_Alle();
         }
 
-        public void refreshListView()
+        public void RefreshListView()
         {
-            dgEinsaetze.ItemsSource = einsatzListe;
+            dgEinsaetze.ItemsSource = _einsatzListe;
         }
 
         private void dgEinsaetze_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Einsatz einsatz = (Einsatz)dgEinsaetze.SelectedItem;
-            
-            if (UpdateEinsatz != null)
-            {
-                UpdateEinsatz(this, e);
-            }
-            
+            UpdateEinsatz?.Invoke(this, e);
         }
     }
 }
